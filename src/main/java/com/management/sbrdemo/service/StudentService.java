@@ -12,7 +12,13 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor // Lombok annotation to generate constructor with required arguments
 public class StudentService implements IStudentService{
+
     private final StudentRepository studentRepository;
+
+    @Override
+    public List<Student> getStudents() {
+        return studentRepository.findAll(); // Fetch all students from the database
+    }
 
     @Override
     public Student addStudent(Student student) {
@@ -21,11 +27,6 @@ public class StudentService implements IStudentService{
         {
             return studentRepository.save(student);
         }
-    }
-
-    @Override
-    public List<Student> getStudents() {
-        return studentRepository.findAll(); // Fetch all students from the database
     }
 
     @Override
