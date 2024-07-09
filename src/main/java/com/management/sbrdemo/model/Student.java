@@ -23,7 +23,7 @@ public class Student {
     private Long id;
     private String firstName;
     private String lastName;
-    @NaturalId
+    @NaturalId // JPA annotation to make this field as a natural identifier
     private String email;
     private String department;
 
