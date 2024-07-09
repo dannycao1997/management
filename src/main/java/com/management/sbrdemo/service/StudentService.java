@@ -1,5 +1,6 @@
 package com.management.sbrdemo.service;
 
+import com.management.sbrdemo.exception.StudentAlreadyExistsException;
 import com.management.sbrdemo.model.Student;
 import com.management.sbrdemo.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ public class StudentService implements IStudentService{
     @Override
     public Student addStudent(Student student) {
         if (studentAlreadyExits(student.getEmail()))
-            throw new RuntimeException(student.getEmail() + " already exists");
+            throw new StudentAlreadyExistsException(student.getEmail() + " already exists");
         {
             return studentRepository.save(student);
         }
