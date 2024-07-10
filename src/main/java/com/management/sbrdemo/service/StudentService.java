@@ -48,12 +48,10 @@ public class StudentService implements IStudentService{
 
     @Override
     public void deleteStudent(Long id) {
-        if (!studentRepository.existsById(id))
+        if (!studentRepository.existsById(id)) {
             throw new StudentNotFoundException("Student not found");
-        {
-            studentRepository.deleteById(id);
         }
-
+        studentRepository.deleteById(id);
     }
 
     private boolean studentAlreadyExits(String email) {
